@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prathibha P | Full-Stack AI & Embedded Systems Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            slate: {
+              950: '#080d18',
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    /* Subtle radial glow & print styling for resume modal */
+    .hero-glow {
+      background: radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.14), transparent 45%),
+                  radial-gradient(circle at 80% 30%, rgba(20, 184, 166, 0.12), transparent 50%);
+    }
+    /* Account for sticky header height when jumping to section anchors */
+    section[id], footer[id] {
+      scroll-margin-top: 5.5rem;
+    }
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #resume-modal, #resume-modal * {
+        visibility: visible;
+      }
+      #resume-modal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: white !important;
+        color: black !important;
+        padding: 0 !important;
+      }
+      #resume-modal .no-print {
+        display: none !important;
+      }
+      #resume-paper {
+        box-shadow: none !important;
+        border: none !important;
+        max-width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-200 overflow-x-hidden">
+
+  <!-- Toast Notification Banner (Replaces alert()) -->
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-5 right-5 z-[60] hidden transform transition-all duration-300 translate-y-2 opacity-0">
+    <div class="flex items-center gap-3 rounded-xl bg-slate-900 border border-emerald-500/40 px-4 py-3 text-sm text-slate-100 shadow-2xl shadow-emerald-950/50">
+      <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+      </span>
+      <span id="toast-message">Copied to clipboard!</span>
+    </div>
+  </div>
+
+  <!-- Sticky Navigation Bar -->
+  <header id="site-header" class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/85 backdrop-blur-md">
+        </span>
+        <div>
+          <span class="block text-base font-bold tracking-tight text-white group-hover:text-emerald-400 transition">Prathibha P</span>
+          <span class="block text-[11px] text-slate-400">Bengaluru, Karnataka</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <a href="#about" class="hover:text-emerald-400 transition">About</a>
+        <a href="#services" class="hover:text-emerald-400 transition">Services</a>
+        <a href="#projects" class="hover:text-emerald-400 transition">Projects</a>
+        <a href="#skills" class="hover:text-emerald-400 transition">Skills</a>
+        <a href="#contact" class="hover:text-emerald-400 transition">Contact</a>
+      </nav>
+
+      <!-- Desktop Actions -->
+      <div class="hidden sm:flex items-center gap-3">
+        <button type="button" data-open-resume class="rounded-xl border border-slate-700 bg-slate-900/90 px-3.5 py-2 text-xs font-semibold text-slate-200 hover:border-emerald-500/50 hover:text-emerald-300 transition">
+          Resume Summary
+        </button>
+        <a href="#contact" class="rounded-xl bg-emerald-500 px-4 py-2 text-xs font-semibold text-slate-950 shadow-md shadow-emerald-500/20 hover:bg-emerald-400 transition">
+          Hire / Contact
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" type="button" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden rounded-xl border border-slate-800 bg-slate-900 p-2.5 text-slate-300 hover:text-white">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-900/95 px-4 py-4 space-y-3">
+      <a href="#about" class="block rounded-lg px-3 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800">About &amp; Education</a>
+      <a href="#services" class="block rounded-lg px-3 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800">What I Can Build</a>
+      <a href="#projects" class="block rounded-lg px-3 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800">Featured Projects</a>
+      <a href="#skills" class="block rounded-lg px-3 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800">Technical Skills</a>
+      <a href="#contact" class="block rounded-lg px-3 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800">Contact</a>
+      <div class="pt-2 flex flex-wrap gap-2">
+        <button type="button" data-open-resume class="flex-1 rounded-xl border border-slate-700 bg-slate-950 px-4 py-2.5 text-xs font-semibold text-slate-200">
+          View / Print Resume
+        </button>
+        <a href="#contact" class="flex-1 text-center rounded-xl bg-emerald-500 px-4 py-2.5 text-xs font-semibold text-slate-950">
+          Hire / Contact Me
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. HERO SECTION -->
+  <section id="top" class="relative hero-glow border-b border-slate-800/70">
+    <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-12 lg:items-center">
+        <!-- Hero Text -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex flex-wrap items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1.5 text-xs font-medium text-emerald-300">
+            <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Open to Full-Time Roles & Freelance Projects · Bengaluru, India
+          </div>
+
+          <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl leading-tight">
+            Hi, I’m <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-300 bg-clip-text text-transparent">Prathibha P</span>
+          </h1>
+
+          <p class="text-lg sm:text-xl font-semibold text-slate-200">
+            M.Tech in Internet of Things <span class="text-emerald-400">|</span> Full-Stack AI &amp; Embedded Systems Developer
+          </p>
+
+          <p class="max-w-2xl text-base leading-relaxed text-slate-400">
+            I bridge intelligent software and real-world hardware—building AI-powered web applications with Next.js, Python, and Gemini API alongside sensor-driven IoT and machine-learning systems on ESP32/ESP8266.
+          </p>
+
+          <!-- Primary CTAs -->
+          <div class="flex flex-wrap items-center gap-3.5 pt-2">
+            <a href="#projects" class="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3.5 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/20 hover:bg-emerald-400 transition">
+              View Projects
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+            <a href="#contact" class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-900 px-6 py-3.5 text-sm font-semibold text-white hover:border-emerald-500/60 hover:bg-slate-800 transition">
+              Hire / Contact Me
+            </a>
+            <button type="button" data-open-resume class="inline-flex items-center justify-center gap-2 rounded-xl border border-teal-500/30 bg-teal-500/10 px-5 py-3.5 text-sm font-semibold text-teal-300 hover:bg-teal-500/20 transition">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Resume Summary
+            </button>
+          </div>
+        </div>
+
+        <!-- Hero Snapshot Card -->
+        <div class="lg:col-span-5">
+          <div class="rounded-2xl border border-slate-800 bg-slate-900/80 p-6 sm:p-7 shadow-2xl backdrop-blur">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-wider text-emerald-400">Dual-Track Profile</p>
+                <p class="mt-0.5 text-base font-bold text-white">Engineering Snapshot</p>
+              </div>
+              <span class="rounded-lg bg-slate-800 px-2.5 py-1 text-xs font-medium text-slate-300">UVCE · 8.85 CGPA</span>
+            </div>
+
+            <div class="mt-5 space-y-4 text-sm">
+              <div class="flex items-start gap-3">
+                <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-400 font-bold text-xs">AI</span>
+                <div>
+                  <p class="font-semibold text-slate-100">Full-Stack AI &amp; Web Engineering</p>
+                  <p class="text-slate-400 text-xs mt-0.5">Next.js, React, Python/Flask, REST APIs, Gemini API integration (Bonvoya).</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-teal-500/15 text-teal-400 font-bold text-xs">IoT</span>
+                <div>
+                  <p class="font-semibold text-slate-100">Embedded &amp; Edge Sensor Systems</p>
+                  <p class="text-slate-400 text-xs mt-0.5">ESP32/ESP8266 microcontrollers, environmental &amp; motion telemetry, real-time alerts.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-cyan-500/15 text-cyan-400 font-bold text-xs">ML</span>
+                <div>
+                  <p class="font-semibold text-slate-100">Python Data &amp; Predictive Modeling</p>
+                  <p class="text-slate-400 text-xs mt-0.5">SQL, classification models, feature engineering, cross-validation &amp; anomaly detection.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+              <span>Languages: EN · KN · TA · HI</span>
+              <a href="#projects" class="font-semibold text-emerald-400 hover:text-emerald-300">Explore 4 Builds →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. ABOUT & HIGHLIGHTS -->
+  <section id="about" class="border-b border-slate-800/70 py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <p class="text-xs font-bold uppercase tracking-widest text-emerald-400">Background &amp; Credentials</p>
+        <h2 class="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+          Academic Rigor Meets Practical End-to-End Building
+        </h2>
+        <p class="mt-4 text-slate-400 leading-relaxed">
+          With a postgraduate specialization in Internet of Things from UVCE and an undergraduate foundation in Computer Science and Engineering, I focus on turning data, sensors, and AI APIs into clean, dependable software products. Whether joining an engineering team full-time or delivering a focused freelance prototype, I prioritize clarity, reliability, and fast iteration.
+        </p>
+      </div>
+
+      <!-- Education, Internship & Certification Cards -->
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- M.Tech -->
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 hover:border-emerald-500/40 transition">
+          <span class="inline-block rounded-lg bg-emerald-500/15 px-2.5 py-1 text-xs font-semibold text-emerald-400">2026 · Post-Grad</span>
+          <h3 class="mt-3 text-base font-bold text-white">M.Tech, Internet of Things</h3>
+          <p class="mt-1 text-sm text-slate-300">University of Visvesvaraya College of Engineering (UVCE)</p>
+          <p class="mt-3 text-xs font-semibold text-teal-300">CGPA: 8.85 / 10</p>
+        </div>
+
+        <!-- B.E. -->
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 hover:border-emerald-500/40 transition">
+          <span class="inline-block rounded-lg bg-slate-800 px-2.5 py-1 text-xs font-semibold text-slate-300">2023 · Undergrad</span>
+          <h3 class="mt-3 text-base font-bold text-white">B.E., Computer Science &amp; Engineering</h3>
+          <p class="mt-1 text-sm text-slate-300">Dr. T. Thimmaiah Institute of Technology</p>
+          <p class="mt-3 text-xs font-semibold text-slate-400">CGPA: 7.29 / 10</p>
+        </div>
+
+        <!-- Internship -->
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 hover:border-emerald-500/40 transition">
+          <span class="inline-block rounded-lg bg-teal-500/15 px-2.5 py-1 text-xs font-semibold text-teal-300">Aug – Sep 2022</span>
+          <h3 class="mt-3 text-base font-bold text-white">Data Science Intern</h3>
+          <p class="mt-1 text-sm text-slate-300">Inventeron Technologies, Bengaluru</p>
+          <p class="mt-3 text-xs text-slate-400 leading-relaxed">Built Python data analysis &amp; ML classification workflows across end-to-end project tasks.</p>
+        </div>
+
+        <!-- Certification -->
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 hover:border-emerald-500/40 transition">
+          <span class="inline-block rounded-lg bg-cyan-500/15 px-2.5 py-1 text-xs font-semibold text-cyan-300">Nov 2024 · Certified</span>
+          <h3 class="mt-3 text-base font-bold text-white">Software Testing</h3>
+          <p class="mt-1 text-sm text-slate-300">NPTEL Certification</p>
+          <p class="mt-3 text-xs text-slate-400 leading-relaxed">Structured verification, test-case design, and quality assurance practices.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SERVICES / WHAT I CAN BUILD -->
+  <section id="services" class="border-b border-slate-800/70 bg-slate-900/30 py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-emerald-400">For Teams &amp; Freelance Clients</p>
+          <h2 class="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">What I Can Build</h2>
+        </div>
+        <p class="max-w-md text-sm text-slate-400">
+          Available for full-time engineering roles as well as scoped freelance MVPs, prototypes, and technical automations.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        <!-- Service 1 -->
+        <div class="flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-950/90 p-7 shadow-lg hover:border-emerald-500/50 transition">
+          <div>
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-400">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h3 class="mt-5 text-lg font-bold text-white">AI &amp; Full-Stack Web Apps</h3>
+            <p class="mt-2.5 text-sm text-slate-400 leading-relaxed">
+              Modern, responsive web applications and AI-assisted planners powered by LLM APIs, structured user workflows, and clean REST backends.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800/80">
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="rounded-md bg-slate-900 px-2.5 py-1 text-xs text-emerald-300 border border-slate-800">Next.js</span>
+              <span class="rounded-md bg-slate-900 px-2.5 py-1 text-xs text-emerald-300 border border-slate-800">React</span>
+              <span class="rounded-md bg-slate-900 px-2.5 py-1 text-xs text-emerald-300 border border-slate-800">Flask</span>
+              <span class="rounded-md bg-slate-900 px-2.5 py-1 text-xs text-emerald-300 border border-slate-800">Gemini API</span>
+            </div>
+            <button type="button" data-inquiry-preset="Freelance / AI Web App Build" class="text-xs font-semibold text-emerald-400 hover:text-emerald-300">
+              Request an AI Web Build →
+            </button>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-950/90 p-7 shadow-lg hover:border-teal-500/50 transition">
+          <div>
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-500/15 text-teal-400">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+              </svg>
+            </div>
+            <h3 class="mt-5 text-lg font-bold text-white">IoT &amp; Embedded Prototypes</h3>
+            <p class="mt-2.5 text-sm text-slate-400 leading-relaxed">
+              Multi-layer sensor architectures, microcontroller telemetry pipelines, automated threshold control, and instant email/SMS alerting systems.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800/80">
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="rounded-md bg-slate-900 px-2.5 py-1 text-xs text-teal-300 border border-slate-800">ESP32 / ESP8266</span>
+              <span class="rounded-md bg-slate-900 px-2.5 py-1 text-xs text-teal-300 border border-slate-800">Sensors</span>
+              <span class="rounded-md bg-slate-900 px-2.5 py-1 text-xs text-teal-300 border border-slate-800">Real-Time Alerts</span>
+            </div>
+            <button type="button" data-inquiry-preset="IoT / Python Prototype" class="text-xs font-semibold text-teal-400 hover:text-teal-300">
+              Scope an IoT Prototype →
+            </button>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-950/90 p-7 shadow-lg hover:border-cyan-500/50 transition">
+          <div>
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/15 text-cyan-400">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+              </svg>
+            </div>
+            <h3 class="mt-5 text-lg font-bold text-white">Python Data &amp; ML Solutions</h3>
+            <p class="mt-2.5 text-sm text-slate-400 leading-relaxed">
+              Supervised classification models, feature engineering, cross-validated predictive pipelines, SQL data workflows, and task automation scripts.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800/80">
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="rounded-md bg-slate-900 px-2.5 py-1 text-xs text-cyan-300 border border-slate-800">Python</span>
+              <span class="rounded-md bg-slate-900 px-2.5 py-1 text-xs text-cyan-300 border border-slate-800">Classification</span>
+              <span class="rounded-md bg-slate-900 px-2.5 py-1 text-xs text-cyan-300 border border-slate-800">Automation</span>
+              <span class="rounded-md bg-slate-900 px-2.5 py-1 text-xs text-cyan-300 border border-slate-800">SQL</span>
+            </div>
+            <button type="button" data-inquiry-preset="IoT / Python Prototype" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300">
+              Discuss a Python / ML Task →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. FEATURED PROJECTS WITH INTERACTIVE CATEGORY FILTER -->
+  <section id="projects" class="border-b border-slate-800/70 py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-emerald-400">Selected Engineering Work</p>
+          <h2 class="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">Featured Projects</h2>
+        </div>
+
+        <!-- Category Filter Buttons -->
+        <div id="project-filters" class="flex flex-wrap gap-2" role="tablist" aria-label="Project Categories">
+          <button type="button" role="tab" aria-selected="true" data-filter="all" class="filter-btn active rounded-xl bg-emerald-500 px-4 py-2 text-xs font-semibold text-slate-950 shadow-sm transition">
+            All (4)
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-filter="ai-web" class="filter-btn rounded-xl border border-slate-700 bg-slate-900 px-4 py-2 text-xs font-semibold text-slate-300 hover:border-emerald-500/50 transition">
+            AI &amp; Web
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-filter="iot-embedded" class="filter-btn rounded-xl border border-slate-700 bg-slate-900 px-4 py-2 text-xs font-semibold text-slate-300 hover:border-emerald-500/50 transition">
+            IoT &amp; Embedded
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-filter="machine-learning" class="filter-btn rounded-xl border border-slate-700 bg-slate-900 px-4 py-2 text-xs font-semibold text-slate-300 hover:border-emerald-500/50 transition">
+            Machine Learning
+          </button>
+        </div>
+      </div>
+
+      <!-- Empty Filter Fallback (Shown only if 0 cards match) -->
+      <div id="no-projects-state" class="hidden mt-8 rounded-2xl border border-slate-800 bg-slate-900/60 p-8 text-center">
+        <p class="text-sm text-slate-300">No projects match this filter view right now.</p>
+        <button type="button" data-filter="all" class="filter-btn mt-3 rounded-xl bg-emerald-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-emerald-400 transition">
+          Reset to All (4)
+        </button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div id="projects-grid" class="mt-10 grid gap-6 md:grid-cols-2">
+
+        <!-- Flagship Project: Bonvoya -->
+        <article data-project-id="bonvoya" data-categories="ai-web" class="project-card md:col-span-2 rounded-2xl border border-emerald-500/40 bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/30 p-7 sm:p-8 shadow-xl">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5">
+              <span class="rounded-full bg-emerald-500 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-slate-950">
+                Flagship Live AI App
+              </span>
+              <span class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-300">
+                AI &amp; Web
+              </span>
+            </div>
+            <span class="text-xs font-medium text-emerald-400 flex items-center gap-1.5">
+              <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+              Deployed Web Application
+            </span>
+          </div>
+
+          <div class="mt-5 grid gap-6 lg:grid-cols-12 lg:items-center">
+            <div class="lg:col-span-8">
+              <h3 class="text-2xl font-bold text-white">Bonvoya — AI-Assisted Travel Planner</h3>
+              <p class="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed">
+                Built and deployed a full-stack AI travel planning web application that transforms user inputs—destination, dates, trip duration, number of travelers, and budget—into personalized, structured itineraries.
+              </p>
+              <ul class="mt-4 space-y-2 text-sm text-slate-400">
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400 font-bold">•</span>
+                  <span>Integrated Gemini API for tailored day-by-day itinerary generation and an interactive <strong class="text-slate-200">AI Travel Buddy</strong> assistant.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400 font-bold">•</span>
+                  <span>Designed dedicated budget-planning and destination-discovery workflows for fast, practical trip decisions.</span>
+                </li>
+              </ul>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="rounded-lg bg-slate-950/80 border border-slate-800 px-3 py-1 text-xs font-medium text-emerald-300">Next.js</span>
+                <span class="rounded-lg bg-slate-950/80 border border-slate-800 px-3 py-1 text-xs font-medium text-emerald-300">React</span>
+                <span class="rounded-lg bg-slate-950/80 border border-slate-800 px-3 py-1 text-xs font-medium text-emerald-300">Gemini API</span>
+                <span class="rounded-lg bg-slate-950/80 border border-slate-800 px-3 py-1 text-xs font-medium text-emerald-300">CSS</span>
+              </div>
+            </div>
+
+            <!-- Interactive Architecture / Demo Card -->
+            <div class="lg:col-span-4 rounded-xl border border-slate-800 bg-slate-950/90 p-5 space-y-4">
+              <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Core Capabilities</p>
+              <div class="space-y-2.5 text-xs text-slate-300">
+                <div class="flex items-center justify-between rounded-lg bg-slate-900 px-3 py-2">
+                  <span>Smart Itinerary Engine</span>
+                  <span class="text-emerald-400 font-semibold">Gemini LLM</span>
+                </div>
+                <div class="flex items-center justify-between rounded-lg bg-slate-900 px-3 py-2">
+                  <span>AI Travel Buddy</span>
+                  <span class="text-emerald-400 font-semibold">Interactive Chat</span>
+                </div>
+                <div class="flex items-center justify-between rounded-lg bg-slate-900 px-3 py-2">
+                  <span>Budget &amp; Discovery</span>
+                  <span class="text-emerald-400 font-semibold">Constraint-Aware</span>
+                </div>
+              </div>
+              <div class="flex flex-col gap-2">
+                <a href="https://bonvoya-ahnm.vercel.app/" target="_blank" rel="noopener noreferrer" class="w-full text-center rounded-xl bg-emerald-500 px-4 py-2.5 text-xs font-semibold text-slate-950 hover:bg-emerald-400 transition">
+                  Live Demo ↗
+                </a>
+                <button type="button" data-project-inquiry="Bonvoya — AI-Assisted Travel Planner" class="w-full rounded-xl bg-emerald-500/15 border border-emerald-500/40 px-4 py-2.5 text-xs font-semibold text-emerald-300 hover:bg-emerald-500/25 transition">
+                  Ask About This Project
+                </button>
+                <a href="https://github.com/prathibha1212" target="_blank" rel="noopener noreferrer" class="w-full text-center rounded-xl border border-slate-700 bg-slate-900 px-4 py-2 text-xs font-semibold text-slate-300 hover:border-emerald-500/50 hover:text-emerald-300 transition">
+                  GitHub Repo ↗
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: Multi-Layer IoT Irrigation -->
+        <article data-project-id="irrigation" data-categories="iot-embedded machine-learning" class="project-card flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-900/70 p-7 hover:border-teal-500/40 transition">
+          <div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full bg-teal-500/15 px-3 py-1 text-xs font-medium text-teal-300">IoT &amp; Embedded</span>
+              <span class="rounded-full bg-cyan-500/15 px-3 py-1 text-xs font-medium text-cyan-300">Machine Learning</span>
+            </div>
+            <h3 class="mt-4 text-xl font-bold text-white">
+              Multi-Layer IoT Architecture for Real-Time Irrigation &amp; Crop Decision Support
+            </h3>
+            <p class="mt-3 text-sm text-slate-400 leading-relaxed">
+              Engineered a three-layer IoT architecture ingesting real-time environmental sensor telemetry to automate smart irrigation triggers and crop selection.
+            </p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-400">
+              <li class="flex items-start gap-2">
+                <span class="text-teal-400 font-bold">•</span>
+                <span>Automated irrigation control driven by soil-moisture and weather thresholds on ESP32/ESP8266 nodes.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-teal-400 font-bold">•</span>
+                <span>Integrated a Python machine-learning model to generate data-backed crop recommendations.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 space-y-3">
+            <div class="flex flex-wrap gap-2">
+              <span class="rounded-lg bg-slate-950 border border-slate-800 px-2.5 py-1 text-xs text-slate-300">Python</span>
+              <span class="rounded-lg bg-slate-950 border border-slate-800 px-2.5 py-1 text-xs text-slate-300">ESP32 / ESP8266</span>
+              <span class="rounded-lg bg-slate-950 border border-slate-800 px-2.5 py-1 text-xs text-slate-300">Environmental Sensors</span>
+              <span class="rounded-lg bg-slate-950 border border-slate-800 px-2.5 py-1 text-xs text-slate-300">Machine Learning</span>
+            </div>
+              <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
+                <div class="flex flex-wrap items-center gap-4">
+                  <button type="button" data-project-details="irrigation" class="text-xs font-semibold text-white hover:text-teal-300 transition">
+                    View Details
+                  </button>
+                  <button type="button" data-project-inquiry="Multi-Layer IoT Architecture for Real-Time Irrigation & Crop Decision Support" class="text-xs font-semibold text-teal-400 hover:text-teal-300 transition">
+                    Ask About This
+                  </button>
+                </div>
+                <a href="https://github.com/prathibha1212" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-slate-300 hover:text-teal-300 transition">
+                  GitHub Repo ↗
+                </a>
+              </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Smart Home Security System -->
+        <article data-project-id="security" data-categories="iot-embedded machine-learning" class="project-card flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-900/70 p-7 hover:border-teal-500/40 transition">
+          <div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full bg-teal-500/15 px-3 py-1 text-xs font-medium text-teal-300">IoT &amp; Embedded</span>
+              <span class="rounded-full bg-cyan-500/15 px-3 py-1 text-xs font-medium text-cyan-300">Anomaly Detection</span>
+            </div>
+            <h3 class="mt-4 text-xl font-bold text-white">
+              Smart Home Security System
+            </h3>
+            <p class="mt-3 text-sm text-slate-400 leading-relaxed">
+              Designed a motion-sensor-based home monitoring pipeline capable of distinguishing unusual activity patterns and dispatching immediate multi-channel alerts.
+            </p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-400">
+              <li class="flex items-start gap-2">
+                <span class="text-teal-400 font-bold">•</span>
+                <span>Combined physical motion sensor triggers with ML-based anomaly detection to reduce false alarms.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-teal-400 font-bold">•</span>
+                <span>Built automated email and SMS notification workflows for prompt remote awareness.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 space-y-3">
+            <div class="flex flex-wrap gap-2">
+              <span class="rounded-lg bg-slate-950 border border-slate-800 px-2.5 py-1 text-xs text-slate-300">IoT</span>
+              <span class="rounded-lg bg-slate-950 border border-slate-800 px-2.5 py-1 text-xs text-slate-300">Motion Sensors</span>
+              <span class="rounded-lg bg-slate-950 border border-slate-800 px-2.5 py-1 text-xs text-slate-300">Machine Learning</span>
+              <span class="rounded-lg bg-slate-950 border border-slate-800 px-2.5 py-1 text-xs text-slate-300">Email / SMS Alerts</span>
+            </div>
+              <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
+                <div class="flex flex-wrap items-center gap-4">
+                  <button type="button" data-project-details="security" class="text-xs font-semibold text-white hover:text-teal-300 transition">
+                    View Details
+                  </button>
+                  <button type="button" data-project-inquiry="Smart Home Security System" class="text-xs font-semibold text-teal-400 hover:text-teal-300 transition">
+                    Ask About This
+                  </button>
+                </div>
+                <a href="https://github.com/prathibha1212" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-slate-300 hover:text-teal-300 transition">
+                  GitHub Repo ↗
+                </a>
+              </div>
+          </div>
+        </article>
+
+        <!-- Project 4: Student Admission Prediction System -->
+        <article data-project-id="admission" data-categories="machine-learning" class="project-card md:col-span-2 flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-900/70 p-7 hover:border-cyan-500/40 transition">
+          <div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full bg-cyan-500/15 px-3 py-1 text-xs font-medium text-cyan-300">Machine Learning &amp; Data</span>
+            </div>
+            <h3 class="mt-4 text-xl font-bold text-white">
+              Student Admission Prediction System
+            </h3>
+            <p class="mt-3 text-sm text-slate-400 leading-relaxed">
+              Developed a binary classification model in Python to predict student admission outcomes from academic and profile attributes, applying feature selection, normalization, and cross-validation.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex flex-wrap gap-2">
+              <span class="rounded-lg bg-slate-950 border border-slate-800 px-2.5 py-1 text-xs text-slate-300">Python</span>
+              <span class="rounded-lg bg-slate-950 border border-slate-800 px-2.5 py-1 text-xs text-slate-300">Logistic Regression</span>
+              <span class="rounded-lg bg-slate-950 border border-slate-800 px-2.5 py-1 text-xs text-slate-300">Feature Selection</span>
+              <span class="rounded-lg bg-slate-950 border border-slate-800 px-2.5 py-1 text-xs text-slate-300">Normalization</span>
+              <span class="rounded-lg bg-slate-950 border border-slate-800 px-2.5 py-1 text-xs text-slate-300">Cross-Validation</span>
+            </div>
+            <div class="flex flex-wrap items-center gap-4">
+              <button type="button" data-project-details="admission" class="text-xs font-semibold text-white hover:text-cyan-300 transition">
+                View Details
+              </button>
+              <button type="button" data-project-inquiry="Student Admission Prediction System" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition">
+                Ask About This
+              </button>
+              <a href="https://github.com/prathibha1212" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-slate-300 hover:text-cyan-400 transition">
+                GitHub Repo ↗
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. TECHNICAL SKILLS MATRIX -->
+  <section id="skills" class="border-b border-slate-800/70 bg-slate-900/30 py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <p class="text-xs font-bold uppercase tracking-widest text-emerald-400">Core Stack</p>
+      <h2 class="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">Technical Skills Matrix</h2>
+
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- Languages -->
+        <div class="rounded-2xl border border-slate-800 bg-slate-950/90 p-6">
+          <h3 class="text-sm font-bold uppercase tracking-wider text-emerald-400">Languages</h3>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="rounded-xl bg-slate-900 border border-slate-800 px-3 py-1.5 text-sm font-medium text-slate-200">Python</span>
+            <span class="rounded-xl bg-slate-900 border border-slate-800 px-3 py-1.5 text-sm font-medium text-slate-200">Java</span>
+            <span class="rounded-xl bg-slate-900 border border-slate-800 px-3 py-1.5 text-sm font-medium text-slate-200">JavaScript</span>
+          </div>
+        </div>
+
+        <!-- Web & Backend -->
+        <div class="rounded-2xl border border-slate-800 bg-slate-950/90 p-6">
+          <h3 class="text-sm font-bold uppercase tracking-wider text-teal-400">Web &amp; Backend</h3>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="rounded-xl bg-slate-900 border border-slate-800 px-3 py-1.5 text-sm font-medium text-slate-200">React</span>
+            <span class="rounded-xl bg-slate-900 border border-slate-800 px-3 py-1.5 text-sm font-medium text-slate-200">Next.js</span>
+            <span class="rounded-xl bg-slate-900 border border-slate-800 px-3 py-1.5 text-sm font-medium text-slate-200">Flask</span>
+            <span class="rounded-xl bg-slate-900 border border-slate-800 px-3 py-1.5 text-sm font-medium text-slate-200">REST APIs</span>
+            <span class="rounded-xl bg-slate-900 border border-slate-800 px-3 py-1.5 text-sm font-medium text-slate-200">HTML / CSS</span>
+          </div>
+        </div>
+
+        <!-- Data & ML -->
+        <div class="rounded-2xl border border-slate-800 bg-slate-950/90 p-6">
+          <h3 class="text-sm font-bold uppercase tracking-wider text-cyan-400">Data &amp; ML</h3>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="rounded-xl bg-slate-900 border border-slate-800 px-3 py-1.5 text-sm font-medium text-slate-200">SQL</span>
+            <span class="rounded-xl bg-slate-900 border border-slate-800 px-3 py-1.5 text-sm font-medium text-slate-200">Machine Learning</span>
+            <span class="rounded-xl bg-slate-900 border border-slate-800 px-3 py-1.5 text-sm font-medium text-slate-200">Logistic Regression</span>
+          </div>
+        </div>
+
+        <!-- IoT & Tools -->
+        <div class="rounded-2xl border border-slate-800 bg-slate-950/90 p-6">
+          <h3 class="text-sm font-bold uppercase tracking-wider text-emerald-300">IoT &amp; Tools</h3>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="rounded-xl bg-slate-900 border border-slate-800 px-3 py-1.5 text-sm font-medium text-slate-200">ESP32 / ESP8266</span>
+            <span class="rounded-xl bg-slate-900 border border-slate-800 px-3 py-1.5 text-sm font-medium text-slate-200">Sensor Integration</span>
+            <span class="rounded-xl bg-slate-900 border border-slate-800 px-3 py-1.5 text-sm font-medium text-slate-200">Git / GitHub</span>
+            <span class="rounded-xl bg-slate-900 border border-slate-800 px-3 py-1.5 text-sm font-medium text-slate-200">VS Code</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. INTERACTIVE CONTACT & QUICK INQUIRY FORM -->
+  <section id="contact" class="py-16 sm:py-24">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-10 lg:grid-cols-12">
+        <!-- Direct Contact Column -->
+        <div class="lg:col-span-5 space-y-6">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-emerald-400">Let’s Connect</p>
+            <h2 class="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+              Hiring or Planning a Build?
+            </h2>
+            <p class="mt-3 text-sm text-slate-400 leading-relaxed">
+              Reach out for full-time engineering roles (IoT/Embedded, Python/ML, or Full-Stack Software) or scoped freelance prototypes in Bengaluru and remote.
+            </p>
+          </div>
+
+          <div class="space-y-3">
+            <!-- Email -->
+            <div class="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/70 p-4">
+              <div>
+                <p class="text-xs text-slate-400">Email</p>
+                <a href="mailto:prathibhaprabhu24@gmail.com" class="text-sm font-semibold text-white hover:text-emerald-400 transition">
+                  prathibhaprabhu24@gmail.com
+                </a>
+              </div>
+              <button type="button" data-copy-text="prathibhaprabhu24@gmail.com" data-copy-label="Email address copied!" class="rounded-xl border border-slate-700 bg-slate-950 px-3 py-1.5 text-xs font-semibold text-slate-300 hover:border-emerald-500/50 hover:text-emerald-300 transition">
+                Copy
+              </button>
+            </div>
+
+            <!-- Phone -->
+            <div class="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/70 p-4">
+              <div>
+                <p class="text-xs text-slate-400">Phone / WhatsApp</p>
+                <a href="tel:+919731298926" class="text-sm font-semibold text-white hover:text-emerald-400 transition">
+                  +91 97312 98926
+                </a>
+              </div>
+              <button type="button" data-copy-text="+91 9731298926" data-copy-label="Phone number copied!" class="rounded-xl border border-slate-700 bg-slate-950 px-3 py-1.5 text-xs font-semibold text-slate-300 hover:border-emerald-500/50 hover:text-emerald-300 transition">
+                Copy
+              </button>
+            </div>
+
+            <!-- Location & Profiles -->
+            <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 space-y-3">
+              <div>
+                <p class="text-xs text-slate-400">Location</p>
+                <p class="text-sm font-semibold text-white">Bengaluru, Karnataka, India</p>
+              </div>
+              <div class="pt-2 border-t border-slate-800 flex flex-wrap gap-2.5">
+                <a href="https://www.linkedin.com/in/prathibha-p12" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2 text-xs font-semibold text-slate-200 hover:border-emerald-500/50 hover:text-emerald-300 transition">
+                  LinkedIn Profile ↗
+                </a>
+                <a href="https://github.com/prathibha1212" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2 text-xs font-semibold text-slate-200 hover:border-emerald-500/50 hover:text-emerald-300 transition">
+                  GitHub Repositories ↗
+                </a>
+              </div>
+              <!-- Always-Accessible Direct Profile Links & Copy Controls -->
+              <div id="direct-profile-links-bar" class="pt-3 border-t border-slate-800/90 space-y-2">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-emerald-400">Direct Profile Links (Sandbox &amp; Preview Safe)</p>
+                <div class="flex flex-col gap-2 text-xs">
+                  <div class="flex items-center justify-between gap-2 rounded-xl bg-slate-950/90 border border-slate-800/80 px-3 py-2">
+                    <a href="https://www.linkedin.com/in/prathibha-p12" target="_blank" rel="noopener noreferrer" class="truncate font-medium text-emerald-300 hover:text-emerald-200 underline underline-offset-2">
+                      https://www.linkedin.com/in/prathibha-p12
+                    </a>
+                    <button type="button" data-copy-text="https://www.linkedin.com/in/prathibha-p12" data-copy-label="LinkedIn URL copied!" class="shrink-0 rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1 text-[11px] font-semibold text-slate-200 hover:border-emerald-500/50 hover:text-emerald-300 transition">
+                      Copy Link
+                    </button>
+                  </div>
+                  <div class="flex items-center justify-between gap-2 rounded-xl bg-slate-950/90 border border-slate-800/80 px-3 py-2">
+                    <a href="https://github.com/prathibha1212" target="_blank" rel="noopener noreferrer" class="truncate font-medium text-emerald-300 hover:text-emerald-200 underline underline-offset-2">
+                      https://github.com/prathibha1212
+                    </a>
+                    <button type="button" data-copy-text="https://github.com/prathibha1212" data-copy-label="GitHub URL copied!" class="shrink-0 rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1 text-[11px] font-semibold text-slate-200 hover:border-emerald-500/50 hover:text-emerald-300 transition">
+                      Copy Link
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Inquiry Composer -->
+        <div class="lg:col-span-7">
+          <div class="rounded-2xl border border-slate-800 bg-slate-900/80 p-6 sm:p-8 shadow-xl">
+            <h3 class="text-lg font-bold text-white">Quick Inquiry &amp; Message Generator</h3>
+            <p class="mt-1 text-xs text-slate-400">
+              Pick an inquiry type below to pre-fill a clean message, then open your email client or copy it in one click.
+            </p>
+
+            <!-- Preset Pills -->
+            <div class="mt-5">
+              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Inquiry Type</label>
+              <div class="flex flex-wrap gap-2" id="preset-buttons">
+                <button type="button" data-preset="Full-Time Job Opportunity" class="preset-btn active rounded-xl bg-emerald-500 px-3.5 py-2 text-xs font-semibold text-slate-950 transition">
+                  Full-Time Job Opportunity
+                </button>
+                <button type="button" data-preset="Freelance / AI Web App Build" class="preset-btn rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2 text-xs font-semibold text-slate-300 hover:border-emerald-500/50 transition">
+                  Freelance / AI Web App Build
+                </button>
+                <button type="button" data-preset="IoT / Python Prototype" class="preset-btn rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2 text-xs font-semibold text-slate-300 hover:border-emerald-500/50 transition">
+                  IoT / Python Prototype
+                </button>
+              </div>
+            </div>
+
+            <!-- Optional Project Reference Selector -->
+            <div class="mt-4">
+              <label for="project-reference" class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
+                Include Project Reference (Optional)
+              </label>
+              <select id="project-reference" class="w-full rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2.5 text-sm text-white focus:border-emerald-500 focus:outline-none">
+                <option value="">None (General Inquiry)</option>
+                <option value="Bonvoya — AI-Assisted Travel Planner">Bonvoya — AI-Assisted Travel Planner</option>
+                <option value="Multi-Layer IoT Architecture for Real-Time Irrigation & Crop Decision Support">Multi-Layer IoT Architecture (Irrigation &amp; Crop Decision Support)</option>
+                <option value="Smart Home Security System">Smart Home Security System</option>
+                <option value="Student Admission Prediction System">Student Admission Prediction System</option>
+              </select>
+            </div>
+
+            <form id="inquiry-form" class="mt-5 space-y-4" onsubmit="handleMailtoSubmit(event)">
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label for="sender-name" class="block text-xs font-medium text-slate-300 mb-1.5">Your Name / Organization</label>
+                  <input id="sender-name" type="text" placeholder="e.g., Ananya / TechCorp" class="w-full rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:border-emerald-500 focus:outline-none" />
+                </div>
+                <div>
+                  <label for="sender-email" class="block text-xs font-medium text-slate-300 mb-1.5">Your Email</label>
+                  <input id="sender-email" type="email" placeholder="you@company.com" class="w-full rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:border-emerald-500 focus:outline-none" />
+                </div>
+              </div>
+
+              <div>
+                <label for="inquiry-subject" class="block text-xs font-medium text-slate-300 mb-1.5">Subject</label>
+                <input id="inquiry-subject" type="text" class="w-full rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2.5 text-sm text-white focus:border-emerald-500 focus:outline-none" />
+              </div>
+
+              <div>
+                <label for="inquiry-body" class="block text-xs font-medium text-slate-300 mb-1.5">Message</label>
+                <textarea id="inquiry-body" rows="4" class="w-full rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2.5 text-sm text-white leading-relaxed focus:border-emerald-500 focus:outline-none"></textarea>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-3 pt-1">
+                <button type="submit" class="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/20 hover:bg-emerald-400 transition">
+                  Send Email
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </button>
+                <button type="button" id="copy-message-btn" class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-950 px-5 py-3 text-sm font-semibold text-slate-200 hover:border-emerald-500/50 hover:text-emerald-300 transition">
+                  Copy Message
+                </button>
+              </div>
+              <p id="inquiry-status" role="status" aria-live="polite" class="text-xs text-emerald-400 min-h-[1rem]"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="site-footer" class="border-t border-slate-800/80 bg-slate-950 py-8">
+    <div class="mx-auto flex max-w-6xl flex-col sm:flex-row items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 text-xs text-slate-400">
+      <p>© <span id="year">2026</span> Prathibha P · Bengaluru, Karnataka</p>
+      <div class="flex flex-wrap items-center gap-5">
+        <a href="https://www.linkedin.com/in/prathibha-p12" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition">LinkedIn ↗</a>
+        <a href="https://github.com/prathibha1212" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition">GitHub ↗</a>
+        <button type="button" data-open-resume class="hover:text-emerald-400 transition">Printable Resume</button>
+        <a href="#projects" class="hover:text-emerald-400 transition">Projects</a>
+        <a href="#contact" class="hover:text-emerald-400 transition">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PROJECT OVERVIEW & DEMO STATUS MODAL -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-950/85 p-4 sm:p-6 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+    <div class="mx-auto max-w-2xl rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-7 shadow-2xl">
+      <div class="flex items-start justify-between gap-4 border-b border-slate-800 pb-4">
+        <div>
+          <span id="project-modal-badge" class="inline-block rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-semibold text-emerald-300">Project Overview</span>
+          <h3 id="project-modal-title" class="mt-2 text-xl font-bold text-white">Project Title</h3>
+        </div>
+        <button id="close-project-modal-btn" type="button" class="rounded-xl border border-slate-700 bg-slate-950 px-3 py-1.5 text-xs font-semibold text-slate-300 hover:text-white transition">
+          Close
+        </button>
+      </div>
+
+      <div class="mt-4 space-y-4 text-sm text-slate-300 leading-relaxed">
+        <p id="project-modal-summary"></p>
+
+        <div class="rounded-xl border border-slate-800 bg-slate-950/90 p-4">
+          <p class="text-xs font-bold uppercase tracking-wider text-emerald-400">Live Demo &amp; Repository Status</p>
+          <p id="project-modal-demo-note" class="mt-1.5 text-xs text-slate-300"></p>
+        </div>
+
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Key Highlights</p>
+          <ul id="project-modal-highlights" class="space-y-1.5 text-xs sm:text-sm text-slate-300"></ul>
+        </div>
+
+        <div id="project-modal-stack" class="flex flex-wrap gap-2 pt-1"></div>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
+        <a href="https://github.com/prathibha1212" target="_blank" rel="noopener noreferrer" class="rounded-xl border border-slate-700 bg-slate-950 px-4 py-2.5 text-xs font-semibold text-slate-200 hover:border-emerald-500/50 hover:text-emerald-300 transition">
+          Open GitHub Profile ↗
+        </a>
+        <div class="flex flex-wrap items-center gap-2.5">
+          <button id="project-modal-copy-btn" type="button" class="rounded-xl border border-slate-700 bg-slate-950 px-4 py-2.5 text-xs font-semibold text-slate-200 hover:border-emerald-500/50 hover:text-emerald-300 transition">
+            Copy Project Note
+          </button>
+          <button id="project-modal-ask-btn" type="button" class="rounded-xl bg-emerald-500 px-4 py-2.5 text-xs font-semibold text-slate-950 hover:bg-emerald-400 transition">
+            Ask About This Project
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DOWNLOADABLE / PRINTABLE RESUME SUMMARY MODAL -->
+  <div id="resume-modal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-950/85 p-4 sm:p-6 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title">
+    <div class="mx-auto max-w-3xl">
+      <!-- Top Controls (Hidden on Print) -->
+      <div class="no-print mb-3 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-800 bg-slate-900 px-4 py-3">
+        <span id="resume-modal-title" class="text-sm font-semibold text-white">Prathibha P — Resume Summary</span>
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="copy-resume-summary-btn" type="button" class="rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2 text-xs font-semibold text-slate-200 hover:border-emerald-500/50 hover:text-emerald-300 transition">
+            Copy Summary
+          </button>
+          <button id="print-resume-btn" type="button" class="rounded-xl bg-emerald-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-emerald-400 transition">
+            Print / Save PDF
+          </button>
+          <button id="close-resume-modal-btn" type="button" class="rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2 text-xs font-semibold text-slate-300 hover:text-white transition">
+            Close
+          </button>
+        </div>
+      </div>
+
+      <!-- Printable Resume Paper -->
+      <div id="resume-paper" class="rounded-2xl bg-white p-6 sm:p-10 text-slate-900 shadow-2xl">
+        <div class="border-b-2 border-slate-900 pb-4 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
+          <div>
+            <h2 class="text-2xl font-extrabold tracking-tight text-slate-950">PRATHIBHA P</h2>
+            <p class="text-sm font-semibold text-emerald-700">M.Tech in Internet of Things | Full-Stack AI &amp; Embedded Systems Developer</p>
+          </div>
+          <div class="text-xs text-slate-600 sm:text-right space-y-0.5">
+            <p>Bengaluru, Karnataka</p>
+            <p>+91 9731298926 · prathibhaprabhu24@gmail.com</p>
+            <p>
+              <a href="https://www.linkedin.com/in/prathibha-p12" target="_blank" rel="noopener noreferrer" class="text-emerald-700 hover:underline">linkedin.com/in/prathibha-p12</a>
+              ·
+              <a href="https://github.com/prathibha1212" target="_blank" rel="noopener noreferrer" class="text-emerald-700 hover:underline">github.com/prathibha1212</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-5 space-y-5 text-xs sm:text-sm leading-relaxed">
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-200 pb-1">Profile Summary</h3>
+            <p class="mt-2 text-slate-700">
+              M.Tech graduate in Internet of Things (UVCE, 8.85 CGPA) and B.E. in Computer Science &amp; Engineering with hands-on experience building AI-assisted full-stack web applications (Next.js, React, Flask, Gemini API), sensor-driven IoT systems (ESP32/ESP8266), and Python machine-learning pipelines.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-200 pb-1">Technical Skills</h3>
+            <div class="mt-2 grid gap-1.5 sm:grid-cols-2 text-slate-700">
+              <p><strong>Languages:</strong> Python, Java, JavaScript</p>
+              <p><strong>Web &amp; Backend:</strong> React, Next.js, Flask, REST APIs, HTML/CSS</p>
+              <p><strong>Data &amp; ML:</strong> SQL, Machine Learning, Logistic Regression</p>
+              <p><strong>IoT &amp; Tools:</strong> ESP32/ESP8266, Sensor Integration, Git/GitHub, VS Code</p>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-200 pb-1">Key Projects</h3>
+            <div class="mt-2 space-y-2.5 text-slate-700">
+              <div>
+                <p class="font-bold text-slate-900">Bonvoya — AI-Assisted Travel Planner <span class="font-normal text-slate-500">(Next.js, React, CSS, Gemini API)</span> · <a href="https://bonvoya-ahnm.vercel.app/" target="_blank" rel="noopener noreferrer" class="font-semibold text-emerald-700 hover:underline">bonvoya-ahnm.vercel.app</a></p>
+                <p>Built and deployed a travel-planning web app (<a href="https://bonvoya-ahnm.vercel.app/" target="_blank" rel="noopener noreferrer" class="text-emerald-700 underline">https://bonvoya-ahnm.vercel.app/</a>) with AI-generated itineraries, an interactive AI Travel Buddy, budget planning, and destination discovery.</p>
+              </div>
+              <div>
+                <p class="font-bold text-slate-900">Multi-Layer IoT Architecture for Real-Time Irrigation &amp; Crop Decision Support <span class="font-normal text-slate-500">(Python, ESP32/ESP8266, Sensors, ML)</span></p>
+                <p>Developed a three-layer IoT system using soil-moisture and weather thresholds for automated irrigation control alongside an ML crop recommendation model.</p>
+              </div>
+              <div>
+                <p class="font-bold text-slate-900">Smart Home Security System <span class="font-normal text-slate-500">(IoT, Motion Sensors, ML, Email/SMS Alerts)</span></p>
+                <p>Designed a motion-sensor monitoring system featuring anomaly detection and automated email/SMS notifications.</p>
+              </div>
+              <div>
+                <p class="font-bold text-slate-900">Student Admission Prediction System <span class="font-normal text-slate-500">(Python, Logistic Regression, ML)</span></p>
+                <p>Built a binary classification model using feature selection, normalization, and cross-validation.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-200 pb-1">Education</h3>
+              <ul class="mt-2 space-y-1.5 text-slate-700">
+                <li><strong>M.Tech, Internet of Things</strong> — UVCE (2026) · CGPA: 8.85</li>
+                <li><strong>B.E., Computer Science &amp; Engg.</strong> — Dr. T. Thimmaiah Institute of Technology (2023) · CGPA: 7.29</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-200 pb-1">Experience &amp; Certification</h3>
+              <ul class="mt-2 space-y-1.5 text-slate-700">
+                <li><strong>Data Science Intern</strong> — Inventeron Technologies (Aug–Sep 2022)</li>
+                <li><strong>Certification:</strong> Software Testing — NPTEL (Nov 2024)</li>
+                <li><strong>Languages:</strong> English, Kannada, Tamil, Hindi</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive JavaScript (Harded & Safely Initialized) -->
+  <script>
+    (function () {
+      'use strict';
+
+      // Structured project catalog for overview modal, inquiry prefill, and summary export
+      const PROJECT_DETAILS = {
+        bonvoya: {
+          title: 'Bonvoya — AI-Assisted Travel Planner',
+          badge: 'AI & Web · Flagship App',
+          summary: 'Full-stack AI travel planning web application that turns destination, dates, trip duration, number of travelers, and budget preferences into structured itineraries.',
+          demoStatus: 'Live deployment available at https://bonvoya-ahnm.vercel.app/ and source code tracked on GitHub (github.com/prathibha1212).',
+          highlights: [
+            'Integrated Gemini API for personalized day-by-day itinerary generation and an interactive AI Travel Buddy assistant.',
+            'Built budget-planning and destination-discovery flows tailored to traveler constraints.',
+            'Developed with Next.js, React, and CSS for responsive desktop and mobile use.'
+          ],
+          stack: ['Next.js', 'React', 'Gemini API', 'CSS'],
+          suggestedPreset: 'Freelance / AI Web App Build'
+        },
+        irrigation: {
+          title: 'Multi-Layer IoT Architecture for Real-Time Irrigation & Crop Decision Support',
+          badge: 'IoT & Embedded · Machine Learning',
+          summary: 'Three-layer IoT pipeline combining environmental sensor readings and microcontroller logic with machine learning for automated irrigation and crop recommendations.',
+          demoStatus: 'Hardware/firmware and prototype artifacts are tracked via GitHub (github.com/prathibha1212) rather than a public hosted link.',
+          highlights: [
+            'Monitors soil-moisture and environmental conditions across ESP32/ESP8266 nodes to trigger automated irrigation thresholds.',
+            'Integrates a Python machine-learning model to support crop selection and real-time decision support.'
+          ],
+          stack: ['Python', 'ESP32 / ESP8266', 'Environmental Sensors', 'Machine Learning'],
+          suggestedPreset: 'IoT / Python Prototype'
+        },
+        security: {
+          title: 'Smart Home Security System',
+          badge: 'IoT & Embedded · Anomaly Detection',
+          summary: 'Motion-sensor-based home monitoring system pairing anomaly detection with automated email and SMS notifications.',
+          demoStatus: 'Prototype/code details are available on GitHub (github.com/prathibha1212) without an external hosted demo endpoint.',
+          highlights: [
+            'Combines motion sensor signals with anomaly detection logic to identify irregular activity.',
+            'Dispatches automated email and SMS alerts to notify users promptly.'
+          ],
+          stack: ['IoT', 'Motion Sensors', 'Machine Learning', 'Email / SMS Alerts'],
+          suggestedPreset: 'IoT / Python Prototype'
+        },
+        admission: {
+          title: 'Student Admission Prediction System',
+          badge: 'Machine Learning & Data',
+          summary: 'Binary classification workflow in Python predicting student admission outcomes from academic and profile features.',
+          demoStatus: 'Model code and evaluation workflow are hosted under GitHub (github.com/prathibha1212).',
+          highlights: [
+            'Applied feature selection and normalization prior to training a Logistic Regression classifier.',
+            'Used cross-validation to evaluate generalization performance reliably.'
+          ],
+          stack: ['Python', 'Logistic Regression', 'Feature Selection', 'Normalization', 'Cross-Validation'],
+          suggestedPreset: 'IoT / Python Prototype'
+        }
+      };
+
+      const PRESET_TEMPLATES = {
+        'Full-Time Job Opportunity': {
+          subject: 'Full-Time Engineering Opportunity — Prathibha P',
+          body: 'Hi Prathibha,\n\nWe reviewed your profile (M.Tech in IoT, Full-Stack AI & Embedded Systems) and would love to discuss a full-time role on our team.\n\nRole / Team:\nLocation / Mode:\nBest time to connect:\n\nBest regards,'
+        },
+        'Freelance / AI Web App Build': {
+          subject: 'Freelance Inquiry: AI / Full-Stack Web Application',
+          body: 'Hi Prathibha,\n\nI saw your work on Bonvoya and would like to discuss building a custom AI / web application.\n\nProject Goal:\nKey Features Needed:\nTarget Timeline:\n\nBest regards,'
+        },
+        'IoT / Python Prototype': {
+          subject: 'Project Inquiry: IoT / Python / ML Prototype',
+          body: 'Hi Prathibha,\n\nWe are looking for help building an IoT / Python / Machine Learning prototype and would love to share the requirements.\n\nHardware / Data Setup:\nExpected Deliverable:\nTimeline:\n\nBest regards,'
+        }
+      };
+
+      let toastTimer = null;
+      let activePreset = 'Full-Time Job Opportunity';
+      let activeProjectModalId = null;
+      let lastFocusedElement = null;
+
+      function getHeaderOffset() {
+        const header = document.getElementById('site-header');
+        return header ? header.getBoundingClientRect().height + 12 : 84;
+      }
+
+      // Displays toast notifications with optional direct link and one-click copy action
+      function showToast(message, options) {
+        try {
+          const toast = document.getElementById('toast');
+          const toastMessage = document.getElementById('toast-message');
+          if (!toast || !toastMessage) return;
+
+          const opts = options && typeof options === 'object' ? options : {};
+          const duration = typeof opts.duration === 'number' ? opts.duration : 2800;
+
+          toastMessage.textContent = '';
+          const textSpan = document.createElement('span');
+          textSpan.textContent = message;
+          toastMessage.appendChild(textSpan);
+
+          if (opts.url) {
+            const actionWrap = document.createElement('span');
+            actionWrap.className = 'ml-2 inline-flex flex-wrap items-center gap-2';
+
+            const directLink = document.createElement('a');
+            directLink.href = opts.url;
+            directLink.target = '_blank';
+            directLink.rel = 'noopener noreferrer';
+            directLink.className = 'underline font-semibold text-emerald-300 hover:text-emerald-200';
+            directLink.textContent = opts.linkLabel || 'Open link ↗';
+            actionWrap.appendChild(directLink);
+
+            if (opts.copyValue) {
+              const copyBtn = document.createElement('button');
+              copyBtn.type = 'button';
+              copyBtn.className = 'rounded-md border border-emerald-500/40 bg-slate-800 px-2 py-0.5 text-xs font-semibold text-emerald-200 hover:bg-slate-700 transition';
+              copyBtn.textContent = opts.copyLabel || 'Copy URL';
+              copyBtn.addEventListener('click', (ev) => {
+                ev.preventDefault();
+                ev.stopPropagation();
+                copyToClipboard(opts.copyValue, 'Profile URL copied to clipboard!');
+              });
+              actionWrap.appendChild(copyBtn);
+            }
+
+            toastMessage.appendChild(actionWrap);
+          }
+
+          toast.classList.remove('hidden');
+          requestAnimationFrame(() => {
+            toast.classList.remove('translate-y-2', 'opacity-0');
+          });
+          clearTimeout(toastTimer);
+          toastTimer = setTimeout(() => {
+            toast.classList.add('translate-y-2', 'opacity-0');
+            setTimeout(() => toast.classList.add('hidden'), 300);
+          }, duration);
+        } catch (_err) {
+          // Safe no-op if DOM is unavailable
+        }
+      }
+
+      function setInquiryStatus(message, isError = false) {
+        const statusEl = document.getElementById('inquiry-status');
+        if (!statusEl) return;
+        statusEl.textContent = message;
+        statusEl.className = isError
+          ? 'text-xs text-amber-300 min-h-[1rem]'
+          : 'text-xs text-emerald-400 min-h-[1rem]';
+      }
+
+      function copyToClipboard(text, successMessage) {
+        if (!text) {
+          showToast('Nothing to copy.');
+          return false;
+        }
+        try {
+          const tempInput = document.createElement('textarea');
+          tempInput.value = text;
+          tempInput.setAttribute('readonly', '');
+          tempInput.style.position = 'fixed';
+          tempInput.style.top = '0';
+          tempInput.style.left = '-9999px';
+          document.body.appendChild(tempInput);
+          tempInput.focus();
+          tempInput.select();
+          const copied = document.execCommand('copy');
+          document.body.removeChild(tempInput);
+
+          if (copied) {
+            showToast(successMessage || 'Copied to clipboard!');
+            return true;
+          }
+          showToast('Copy action was blocked — please copy manually.');
+          return false;
+        } catch (_err) {
+          showToast('Unable to copy automatically — please copy manually.');
+          return false;
+        }
+      }
+
+      function smoothScrollToTarget(targetEl) {
+        if (!targetEl) return;
+        const rect = targetEl.getBoundingClientRect();
+        const targetY = Math.max(0, rect.top + window.scrollY - getHeaderOffset());
+        try {
+          window.scrollTo({ top: targetY, behavior: 'smooth' });
+        } catch (_err) {
+          window.scrollTo(0, targetY);
+        }
+      }
+
+      function closeMobileMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        if (mobileMenu) mobileMenu.classList.add('hidden');
+        if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      function toggleMobileMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        if (!mobileMenu || !mobileMenuBtn) return;
+        const willOpen = mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden', !willOpen);
+        mobileMenuBtn.setAttribute('aria-expanded', String(willOpen));
+      }
+
+      function applyProjectFilter(filterValue) {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        const emptyState = document.getElementById('no-projects-state');
+        const targetFilter = filterValue || 'all';
+
+        let visibleCount = 0;
+
+        projectCards.forEach((card) => {
+          const rawCategories = card.getAttribute('data-categories') || '';
+          const categories = rawCategories.split(/\s+/).filter(Boolean);
+          const matches = targetFilter === 'all' || categories.includes(targetFilter);
+          card.classList.toggle('hidden', !matches);
+          if (matches) visibleCount += 1;
+        });
+
+        filterButtons.forEach((btn) => {
+          const isMatch = btn.getAttribute('data-filter') === targetFilter;
+          const isTab = btn.getAttribute('role') === 'tab';
+          if (isTab) {
+            btn.setAttribute('aria-selected', String(isMatch));
+          }
+          btn.classList.toggle('active', isMatch);
+          if (isMatch) {
+            btn.classList.remove('border', 'border-slate-700', 'bg-slate-900', 'text-slate-300');
+            btn.classList.add('bg-emerald-500', 'text-slate-950', 'shadow-sm');
+          } else {
+            btn.classList.remove('bg-emerald-500', 'text-slate-950', 'shadow-sm');
+            btn.classList.add('border', 'border-slate-700', 'bg-slate-900', 'text-slate-300');
+          }
+        });
+
+        if (emptyState) {
+          emptyState.classList.toggle('hidden', visibleCount > 0);
+        }
+      }
+
+      function composeInquiryText(presetName, projectRef) {
+        const template = PRESET_TEMPLATES[presetName] || PRESET_TEMPLATES['Full-Time Job Opportunity'];
+        const trimmedRef = (projectRef || '').trim();
+        const isBonvoya = trimmedRef.toLowerCase().includes('bonvoya');
+        const refLine = isBonvoya
+          ? `Referenced Project: ${trimmedRef} (Live Demo: https://bonvoya-ahnm.vercel.app/)`
+          : `Referenced Project: ${trimmedRef}`;
+        const subjectWithRef = trimmedRef
+          ? `${template.subject} (${trimmedRef})`
+          : template.subject;
+        const bodyWithRef = trimmedRef
+          ? template.body.replace('\n\nBest regards,', `\n${refLine}\n\nBest regards,`)
+          : template.body;
+
+        return {
+          subject: subjectWithRef,
+          body: bodyWithRef
+        };
+      }
+
+      function syncInquiryComposer(presetName, projectRef) {
+        const presetButtons = document.querySelectorAll('.preset-btn');
+        const subjectInput = document.getElementById('inquiry-subject');
+        const bodyInput = document.getElementById('inquiry-body');
+        const projectRefSelect = document.getElementById('project-reference');
+
+        const chosenPreset = PRESET_TEMPLATES[presetName] ? presetName : 'Full-Time Job Opportunity';
+        activePreset = chosenPreset;
+
+        const chosenRef = typeof projectRef === 'string'
+          ? projectRef
+          : (projectRefSelect ? projectRefSelect.value : '');
+
+        if (projectRefSelect && projectRefSelect.value !== chosenRef) {
+          projectRefSelect.value = chosenRef;
+        }
+
+        presetButtons.forEach((btn) => {
+          const isMatch = btn.getAttribute('data-preset') === chosenPreset;
+          btn.classList.toggle('active', isMatch);
+          if (isMatch) {
+            btn.classList.remove('border', 'border-slate-700', 'bg-slate-950', 'text-slate-300');
+            btn.classList.add('bg-emerald-500', 'text-slate-950');
+          } else {
+            btn.classList.remove('bg-emerald-500', 'text-slate-950');
+            btn.classList.add('border', 'border-slate-700', 'bg-slate-950', 'text-slate-300');
+          }
+        });
+
+        const composed = composeInquiryText(chosenPreset, chosenRef);
+        if (subjectInput) subjectInput.value = composed.subject;
+        if (bodyInput) bodyInput.value = composed.body;
+      }
+
+      function jumpToContactWithInquiry(presetName, projectRef, toastMsg) {
+        closeMobileMenu();
+        syncInquiryComposer(presetName, projectRef);
+        const contactEl = document.getElementById('contact');
+        smoothScrollToTarget(contactEl);
+        setInquiryStatus(toastMsg || `Prepared "${presetName}" message.`);
+        if (toastMsg) showToast(toastMsg);
+      }
+
+      function getFormattedInquiryPayload() {
+        const nameEl = document.getElementById('sender-name');
+        const emailEl = document.getElementById('sender-email');
+        const subjectEl = document.getElementById('inquiry-subject');
+        const bodyEl = document.getElementById('inquiry-body');
+        const refEl = document.getElementById('project-reference');
+
+        const senderName = nameEl ? nameEl.value.trim() : '';
+        const senderEmail = emailEl ? emailEl.value.trim() : '';
+        const subject = subjectEl ? subjectEl.value.trim() : 'Inquiry — Prathibha P';
+        const body = bodyEl ? bodyEl.value.trim() : '';
+        const projectRef = refEl ? refEl.value.trim() : '';
+
+        const headerLines = [];
+        if (senderName) headerLines.push(`From: ${senderName}`);
+        if (senderEmail) headerLines.push(`Reply-To: ${senderEmail}`);
+        if (projectRef && !body.includes(projectRef)) headerLines.push(`Project: ${projectRef}`);
+
+        const fullBody = headerLines.length > 0
+          ? `${headerLines.join('\n')}\n\n${body}`
+          : body;
+
+        return { subject, body: fullBody };
+      }
+
+      function openProjectModal(projectId, triggerEl) {
+        const data = PROJECT_DETAILS[projectId];
+        const modal = document.getElementById('project-modal');
+        if (!data || !modal) return;
+
+        lastFocusedElement = triggerEl || document.activeElement;
+        activeProjectModalId = projectId;
+
+        const badgeEl = document.getElementById('project-modal-badge');
+        const titleEl = document.getElementById('project-modal-title');
+        const summaryEl = document.getElementById('project-modal-summary');
+        const demoNoteEl = document.getElementById('project-modal-demo-note');
+        const highlightsEl = document.getElementById('project-modal-highlights');
+        const stackEl = document.getElementById('project-modal-stack');
+
+        if (badgeEl) badgeEl.textContent = data.badge;
+        if (titleEl) titleEl.textContent = data.title;
+        if (summaryEl) summaryEl.textContent = data.summary;
+        if (demoNoteEl) demoNoteEl.textContent = data.demoStatus;
+
+        if (highlightsEl) {
+          highlightsEl.innerHTML = '';
+          data.highlights.forEach((item) => {
+            const li = document.createElement('li');
+            li.className = 'flex items-start gap-2';
+            li.innerHTML = `<span class="text-emerald-400 font-bold">•</span><span>${item}</span>`;
+            highlightsEl.appendChild(li);
+          });
+        }
+
+        if (stackEl) {
+          stackEl.innerHTML = '';
+          data.stack.forEach((tech) => {
+            const span = document.createElement('span');
+            span.className = 'rounded-lg bg-slate-950 border border-slate-800 px-2.5 py-1 text-xs font-medium text-emerald-300';
+            span.textContent = tech;
+            stackEl.appendChild(span);
+          });
+        }
+
+        closeResumeModal(false);
+        modal.classList.remove('hidden');
+        const closeBtn = document.getElementById('close-project-modal-btn');
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeProjectModal(restoreFocus = true) {
+        const modal = document.getElementById('project-modal');
+        if (!modal || modal.classList.contains('hidden')) return;
+        modal.classList.add('hidden');
+        activeProjectModalId = null;
+        if (restoreFocus && lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+          lastFocusedElement.focus();
+          lastFocusedElement = null;
+        }
+      }
+
+      function openResumeModal(triggerEl) {
+        const modal = document.getElementById('resume-modal');
+        if (!modal) return;
+        lastFocusedElement = triggerEl || document.activeElement;
+        closeMobileMenu();
+        closeProjectModal(false);
+        modal.classList.remove('hidden');
+        const printBtn = document.getElementById('print-resume-btn');
+        if (printBtn) printBtn.focus();
+      }
+
+      function closeResumeModal(restoreFocus = true) {
+        const modal = document.getElementById('resume-modal');
+        if (!modal || modal.classList.contains('hidden')) return;
+        modal.classList.add('hidden');
+        if (restoreFocus && lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+          lastFocusedElement.focus();
+          lastFocusedElement = null;
+        }
+      }
+
+      function buildPlainTextResumeSummary() {
+        return [
+          'PRATHIBHA P',
+          'M.Tech in Internet of Things | Full-Stack AI & Embedded Systems Developer',
+          'Bengaluru, Karnataka | +91 9731298926 | prathibhaprabhu24@gmail.com',
+          'LinkedIn: https://www.linkedin.com/in/prathibha-p12 | GitHub: https://github.com/prathibha1212',
+          '',
+          'EDUCATION:',
+          '- M.Tech, Internet of Things — UVCE (2026) | CGPA: 8.85',
+          '- B.E., Computer Science & Engineering — Dr. T. Thimmaiah Institute of Technology (2023) | CGPA: 7.29',
+          '',
+          'EXPERIENCE & CERTIFICATION:',
+          '- Data Science Intern — Inventeron Technologies (Aug–Sep 2022)',
+          '- Software Testing — NPTEL (Nov 2024)',
+          '',
+          'KEY PROJECTS:',
+          '- Bonvoya — AI-Assisted Travel Planner (Next.js, React, CSS, Gemini API) | Live: https://bonvoya-ahnm.vercel.app/',
+          '- Multi-Layer IoT Architecture for Real-Time Irrigation & Crop Decision Support (Python, ESP32/ESP8266, Sensors, ML)',
+          '- Smart Home Security System (IoT, Motion Sensors, ML, Email/SMS Alerts)',
+          '- Student Admission Prediction System (Python, Logistic Regression, ML)'
+        ].join('\n');
+      }
+
+      function initPortfolio() {
+        // 1. Dynamic footer year
+        const yearEl = document.getElementById('year');
+        if (yearEl) {
+          yearEl.textContent = String(new Date().getFullYear());
+        }
+
+        // 2. Smooth anchor scrolling with sticky header offset
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener('click', (event) => {
+            const href = anchor.getAttribute('href');
+            if (!href || href === '#') return;
+            const targetEl = document.querySelector(href);
+            if (targetEl) {
+              event.preventDefault();
+              closeMobileMenu();
+              smoothScrollToTarget(targetEl);
+            }
+          });
+        });
+
+        // 3. Mobile menu toggle & outside click
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuBtn) {
+          mobileMenuBtn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            toggleMobileMenu();
+          });
+        }
+        document.addEventListener('click', (event) => {
+          if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+            const clickedInsideMenu = mobileMenu.contains(event.target);
+            const clickedMenuBtn = mobileMenuBtn && mobileMenuBtn.contains(event.target);
+            if (!clickedInsideMenu && !clickedMenuBtn) {
+              closeMobileMenu();
+            }
+          }
+        });
+
+        // 4. Resume modal triggers & controls
+        document.querySelectorAll('[data-open-resume]').forEach((btn) => {
+          btn.addEventListener('click', () => openResumeModal(btn));
+        });
+
+        const closeResumeBtn = document.getElementById('close-resume-modal-btn');
+        if (closeResumeBtn) {
+          closeResumeBtn.addEventListener('click', () => closeResumeModal(true));
+        }
+
+        const printResumeBtn = document.getElementById('print-resume-btn');
+        if (printResumeBtn) {
+          printResumeBtn.addEventListener('click', () => {
+            try {
+              window.print();
+              showToast('Opened print / save-as-PDF dialog.');
+            } catch (_err) {
+              showToast('Use your browser print menu (Ctrl/Cmd + P) to save as PDF.');
+            }
+          });
+        }
+
+        const copyResumeBtn = document.getElementById('copy-resume-summary-btn');
+        if (copyResumeBtn) {
+          copyResumeBtn.addEventListener('click', () => {
+            copyToClipboard(buildPlainTextResumeSummary(), 'Resume summary copied to clipboard!');
+          });
+        }
+
+        const resumeModal = document.getElementById('resume-modal');
+        if (resumeModal) {
+          resumeModal.addEventListener('click', (event) => {
+            if (event.target === resumeModal) {
+              closeResumeModal(true);
+            }
+          });
+        }
+
+        // 5. Project category filters
+        document.querySelectorAll('.filter-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const filterVal = btn.getAttribute('data-filter') || 'all';
+            applyProjectFilter(filterVal);
+            showToast(filterVal === 'all' ? 'Showing all 4 projects.' : `Filtered by ${btn.textContent.trim()}.`);
+          });
+        });
+
+        // 6. Project overview modal & inquiry prefill buttons
+        document.querySelectorAll('[data-project-details]').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-project-details');
+            openProjectModal(id, btn);
+          });
+        });
+
+        const closeProjectBtn = document.getElementById('close-project-modal-btn');
+        if (closeProjectBtn) {
+          closeProjectBtn.addEventListener('click', () => closeProjectModal(true));
+        }
+
+        const projectModal = document.getElementById('project-modal');
+        if (projectModal) {
+          projectModal.addEventListener('click', (event) => {
+            if (event.target === projectModal) {
+              closeProjectModal(true);
+            }
+          });
+        }
+
+        const projectModalCopyBtn = document.getElementById('project-modal-copy-btn');
+        if (projectModalCopyBtn) {
+          projectModalCopyBtn.addEventListener('click', () => {
+            const info = PROJECT_DETAILS[activeProjectModalId];
+            if (!info) return;
+            const note = `${info.title}\n${info.summary}\n${info.demoStatus}\nGitHub: https://github.com/prathibha1212`;
+            copyToClipboard(note, `Copied details for ${info.title}.`);
+          });
+        }
+
+        const projectModalAskBtn = document.getElementById('project-modal-ask-btn');
+        if (projectModalAskBtn) {
+          projectModalAskBtn.addEventListener('click', () => {
+            const info = PROJECT_DETAILS[activeProjectModalId];
+            if (!info) return;
+            closeProjectModal(false);
+            jumpToContactWithInquiry(
+              info.suggestedPreset,
+              info.title,
+              `Attached "${info.title}" to your inquiry.`
+            );
+          });
+        }
+
+        document.querySelectorAll('[data-project-inquiry]').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const projectTitle = btn.getAttribute('data-project-inquiry') || '';
+            const suggestedPreset = projectTitle.includes('Bonvoya')
+              ? 'Freelance / AI Web App Build'
+              : 'IoT / Python Prototype';
+            jumpToContactWithInquiry(
+              suggestedPreset,
+              projectTitle,
+              `Attached "${projectTitle}" to your inquiry.`
+            );
+          });
+        });
+
+        document.querySelectorAll('[data-inquiry-preset]').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const preset = btn.getAttribute('data-inquiry-preset') || 'Full-Time Job Opportunity';
+            jumpToContactWithInquiry(preset, '', `Selected "${preset}" template.`);
+          });
+        });
+
+        // 7. Inquiry composer presets, project reference dropdown, form submit & copy
+        syncInquiryComposer(activePreset, '');
+
+        document.querySelectorAll('.preset-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const preset = btn.getAttribute('data-preset') || 'Full-Time Job Opportunity';
+            syncInquiryComposer(preset);
+            setInquiryStatus(`Updated message for "${preset}".`);
+          });
+        });
+
+        const projectRefSelect = document.getElementById('project-reference');
+        if (projectRefSelect) {
+          projectRefSelect.addEventListener('change', () => {
+            syncInquiryComposer(activePreset, projectRefSelect.value);
+            setInquiryStatus(
+              projectRefSelect.value
+                ? `Included project reference: ${projectRefSelect.value}`
+                : 'Cleared project reference.'
+            );
+          });
+        }
+
+        const copyMessageBtn = document.getElementById('copy-message-btn');
+        if (copyMessageBtn) {
+          copyMessageBtn.addEventListener('click', () => {
+            const payload = getFormattedInquiryPayload();
+            const combined = `Subject: ${payload.subject}\n\n${payload.body}`;
+            const ok = copyToClipboard(combined, 'Formatted inquiry message copied!');
+            if (ok) {
+              setInquiryStatus('Copied subject and message to clipboard.');
+            }
+          });
+        }
+
+        const inquiryForm = document.getElementById('inquiry-form');
+        if (inquiryForm) {
+          inquiryForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const payload = getFormattedInquiryPayload();
+            const mailtoUrl = `mailto:prathibhaprabhu24@gmail.com?subject=${encodeURIComponent(payload.subject)}&body=${encodeURIComponent(payload.body)}`;
+
+            try {
+              const link = document.createElement('a');
+              link.href = mailtoUrl;
+              link.style.display = 'none';
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+              setInquiryStatus('Opening your email app. If nothing opens, click "Copy Message" or email prathibhaprabhu24@gmail.com directly.');
+              showToast('Prepared email draft to prathibhaprabhu24@gmail.com');
+            } catch (_err) {
+              copyToClipboard(`Subject: ${payload.subject}\n\n${payload.body}`, 'Mail client unavailable — message copied to clipboard!');
+              setInquiryStatus('Could not launch email app automatically; message copied to clipboard.', true);
+            }
+          });
+        }
+
+        // 8. Quick copy buttons (email, phone, etc.)
+        document.querySelectorAll('[data-copy-text]').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const val = btn.getAttribute('data-copy-text') || '';
+            const label = btn.getAttribute('data-copy-label') || 'Copied to clipboard!';
+            copyToClipboard(val, label);
+          });
+        });
+
+        // 8b. Non-blocking visual/copy feedback on LinkedIn & GitHub anchor clicks
+        document.addEventListener('click', (event) => {
+          const anchor = event.target && event.target.closest
+            ? event.target.closest('a[href="https://www.linkedin.com/in/prathibha-p12"], a[href="https://github.com/prathibha1212"]')
+            : null;
+          if (!anchor) return;
+
+          const profileUrl = anchor.getAttribute('href');
+          const isLinkedIn = profileUrl === 'https://www.linkedin.com/in/prathibha-p12';
+          const profileName = isLinkedIn ? 'LinkedIn' : 'GitHub';
+
+          showToast(`${profileName} link selected — if a preview sandbox blocks new tabs, use the direct link or copy button:`, {
+            url: profileUrl,
+            linkLabel: `Open ${profileName} ↗`,
+            copyValue: profileUrl,
+            duration: 6000
+          });
+        });
+
+        // 9. Global Escape key handler for modals & mobile menu
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            closeResumeModal(true);
+            closeProjectModal(true);
+            closeMobileMenu();
+          }
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPortfolio);
+      } else {
+        initPortfolio();
+      }
+    })();
+  </script>
+</body>
+</html>
